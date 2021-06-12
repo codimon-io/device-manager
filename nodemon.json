@@ -1,0 +1,11 @@
+{
+  "watch": ["src"],
+  "ext": ".ts,.js,.yml",
+  "ignore": [],
+  "exec": "ts-node ./src/apps/manager.ts",
+  "env": {
+    "NODE_ENV": "development",
+    "DEBUG": "manager:*",
+    "DEBUG_COLORS": true
+  }
+}
