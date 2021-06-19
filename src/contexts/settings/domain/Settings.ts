@@ -26,6 +26,18 @@ class Settings extends AggregateRoot {
     return settings;
   }
 
+  public getId(): DeviceId {
+    return this.id;
+  }
+
+  public getName(): DeviceName {
+    return this.name;
+  }
+
+  public setName(name: DeviceName): void {
+    this.name = name;
+  }
+
   toJSON(): ISettingsJSON {
     return {
       id: this.id.value,

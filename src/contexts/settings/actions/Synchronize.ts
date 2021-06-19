@@ -1,6 +1,9 @@
+import debug from 'debug';
 import Action from '../../shared/domain/Action';
 import ISettingsRepository from '../domain/ISettingsRepository';
 import ISynchronizeService from '../domain/ISynchronizeService';
+
+const logger = debug('device:contexts:settings:actions:Synchronize');
 
 class Synchronize extends Action {
   private synchronizeService: ISynchronizeService;
@@ -20,7 +23,9 @@ class Synchronize extends Action {
 
     const newSettings = await this.synchronizeService.sync(settings);
 
-    this.settingsRepository.save(newSettings);
+    await this.settingsRepository.save(newSettings);
+
+    logger('New settings', newSettings.toJSON());
   }
 }
 
