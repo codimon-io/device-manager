@@ -1,11 +1,9 @@
-import { io } from 'socket.io-client';
+/* eslint-disable sort-imports */
+import Onoff from '../infrastructure/onoff/Onoff';
+import Button from '../contexts/shared/infrastructure/onoff/Button';
 
-const socket = io('http://localhost:3003');
+const inputs: Button[] = [];
 
-function main() {
-  socket.emit('device:info', {
-    message: 'holiiiii',
-  });
-}
+const onoff = new Onoff(inputs);
 
-main();
+onoff.listen();

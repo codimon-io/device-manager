@@ -1,2 +1,2 @@
 
-scp ./tsconfig.json pi@192.168.0.11:/home/pi/grover-lee
+scp ./src pi@192.168.0.10:/home/pi/Desktop/device-manager
