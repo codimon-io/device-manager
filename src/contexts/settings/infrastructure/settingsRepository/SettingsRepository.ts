@@ -29,7 +29,11 @@ class SettingsRepository implements ISettingsRepository {
 
   async save(settings: Settings): Promise<void> {
     try {
-      await fs.promises.writeFile(this.settingsFile, JSON.stringify(settings.toJSON()), 'utf8');
+      const data = JSON.stringify(settings.toJSON());
+
+      console.log(data);
+
+      await fs.promises.writeFile(this.settingsFile, data, 'utf8');
     } catch (err) {
       error(err.message);
 
