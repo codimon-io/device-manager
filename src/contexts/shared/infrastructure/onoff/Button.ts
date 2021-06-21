@@ -7,8 +7,12 @@ const errorLogger = debug('device:hardware:button:error');
 class Button {
   private button: onoff.Gpio;
 
+  private pressed: boolean;
+
   constructor(pin: number) {
     this.button = new onoff.Gpio(pin, 'in', 'both');
+
+    this.pressed = false;
   }
 
   onPress(action: Action) {
@@ -17,8 +21,14 @@ class Button {
         errorLogger(error.message);
       }
 
-      if (value) {
+      if (value === 1 && this.pressed === false) {
         action.execute();
+
+        this.pressed = true;
+      } 
+      
+      if (value === 0 && this.pressed === true){
+        this.pressed = false;
       }
     });
   }
