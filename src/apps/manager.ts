@@ -1,15 +1,14 @@
-/* eslint-disable sort-imports */
+import Button from '../contexts/shared/infrastructure/johnnyFive/Button';
 import debug from 'debug';
-import Onoff from '../infrastructure/onoff/Onoff';
-import Button from '../contexts/shared/infrastructure/onoff/Button';
-import synchronizeOnOffButton from '../contexts/settings/infrastructure/button/synchronizeOnOffButton';
+import JohnnyFive from '../infrastructure/JohnnyFive/JohnnyFive';
+import synchronizeJohnnyFiveButton from '../contexts/device/infrastructure/button/synchronizeJohnnyFiveButton';
 
 const logger = debug('device:apps:manager');
 
-const buttons: Button[] = [synchronizeOnOffButton];
+const buttons: Button[] = [synchronizeJohnnyFiveButton];
 
-const onoff = new Onoff(buttons);
+const johnnyFive = new JohnnyFive(buttons);
 
-onoff.listen(() => {
-  logger('The device is listening');
+johnnyFive.listen(() => {
+  logger('The device is running');
 });

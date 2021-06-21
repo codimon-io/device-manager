@@ -1,14 +1,14 @@
 import Button from '../../../shared/infrastructure/onoff/Button';
 import config from '../../../../infrastructure/config';
+import DeviceRepository from '../DeviceRepository/DeviceRepository';
 import Synchronize from '../../actions/Synchronize';
-import SettingsRepository from '../settingsRepository/SettingsRepository';
-import SynchronizeService from '../synchronizeService/SynchronizeService';
+import SynchronizeService from '../SynchronizeService/SynchronizeService';
 
-const settingsRepository = new SettingsRepository();
+const deviceRepository = new DeviceRepository();
 
 const synchronizeService = new SynchronizeService();
 
-const synchronize = new Synchronize(synchronizeService, settingsRepository);
+const synchronize = new Synchronize(synchronizeService, deviceRepository);
 
 const synchronizeOnOffButton = new Button(config.button.synchronize);
 

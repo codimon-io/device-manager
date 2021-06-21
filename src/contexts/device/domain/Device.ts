@@ -2,12 +2,12 @@ import AggregateRoot from '../../shared/domain/entities/AggregateRoot';
 import DeviceId from './DeviceId';
 import DeviceName from './DeviceName';
 
-interface ISettingsJSON {
+interface IDeviceJSON {
   id: string;
   name: string;
 }
 
-class Settings extends AggregateRoot {
+class Device extends AggregateRoot {
   private id: DeviceId;
 
   private name: DeviceName;
@@ -21,9 +21,9 @@ class Settings extends AggregateRoot {
   }
 
   public static create(id: DeviceId, name: DeviceName) {
-    const settings = new Settings(id, name);
+    const device = new Device(id, name);
 
-    return settings;
+    return device;
   }
 
   public getId(): DeviceId {
@@ -38,17 +38,16 @@ class Settings extends AggregateRoot {
     this.name = name;
   }
 
-  toJSON(): ISettingsJSON {
+  public toJSON(): IDeviceJSON {
     return {
       id: this.id.value,
       name: this.name.value,
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  static fromJSON(data: ISettingsJSON): Settings {
-    return new Settings(new DeviceId(data.id), new DeviceName(data.name));
+  public static fromJSON(data: IDeviceJSON): Device {
+    return new Device(new DeviceId(data.id), new DeviceName(data.name));
   }
 }
 
-export default Settings;
+export default Device;

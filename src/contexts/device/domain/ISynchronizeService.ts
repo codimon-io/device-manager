@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import Settings from './Settings';
+import Device from './Device';
 
 interface ISynchronizeService {
-  sync(settings: Settings): Promise<Settings>;
+  sync(device: Device): Promise<Device>;
 }
 
 export default ISynchronizeService;

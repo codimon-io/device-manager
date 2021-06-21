@@ -1,5 +1,17 @@
 import Button from '../../contexts/shared/infrastructure/onoff/Button';
 
+/**
+ * @example
+ * import Onoff from '../infrastructure/onoff/Onoff';
+ * 
+ * const buttons: Button[] = [synchronizeOnOffButton];
+ * 
+ * const onoff = new Onoff(buttons);
+ *
+ * onoff.listen(() => {
+ *   logger('The device is running');
+ * });
+ */
 class Onoff {
   public buttons: Button[];
 
@@ -7,7 +19,6 @@ class Onoff {
     this.buttons = buttons;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   listen(cb?: () => void) {
     if (cb) {
       cb();
