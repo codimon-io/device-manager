@@ -1,4 +1,4 @@
-import Button from '../../contexts/shared/infrastructure/JohnnyFive/Button';
+import Button from '../../contexts/shared/infrastructure/johnnyFive/Button';
 import JohnnyFive from 'johnny-five';
 import { RaspiIO } from 'raspi-io';
 
