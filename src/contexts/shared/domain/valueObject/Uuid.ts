@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/order
 import InvalidArgumentError from './InvalidArgumentError';
 import { v4 } from 'uuid';
 import validate from 'uuid-validate';
