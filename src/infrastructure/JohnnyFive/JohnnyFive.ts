@@ -2,6 +2,19 @@ import Button from '../../contexts/shared/infrastructure/johnnyFive/Button';
 import JohnnyFive from 'johnny-five';
 import { RaspiIO } from 'raspi-io';
 
+/**
+ * @example
+ * import Button from '../contexts/shared/infrastructure/johnnyFive/Button';
+ * import JohnnyFive from '../infrastructure/JohnnyFive/JohnnyFive';
+ * 
+ * const buttons: Button[] = [synchronizeJohnnyFiveButton];
+ *
+ * const johnnyFive = new JohnnyFive(buttons);
+ *
+ * johnnyFive.listen(() => {
+ *  logger('The device is running');
+ * });
+ */
 class JF {
   private buttons: Button[];
 

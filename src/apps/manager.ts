@@ -1,14 +1,14 @@
-import Button from '../contexts/shared/infrastructure/johnnyFive/Button';
+import Button from '../contexts/shared/infrastructure/onoff/Button';
 import debug from 'debug';
-import JohnnyFive from '../infrastructure/JohnnyFive/JohnnyFive';
-import synchronizeJohnnyFiveButton from '../contexts/device/infrastructure/button/synchronizeJohnnyFiveButton';
+import Onoff from '../infrastructure/onoff/Onoff';
+import synchronizeOnOffButton from '../contexts/device/infrastructure/button/synchronizeOnOffButton';
 
 const logger = debug('device:apps:manager');
 
-const buttons: Button[] = [synchronizeJohnnyFiveButton];
+const buttons: Button[] = [synchronizeOnOffButton];
 
-const johnnyFive = new JohnnyFive(buttons);
+const onoff = new Onoff(buttons);
 
-johnnyFive.listen(() => {
+onoff.listen(() => {
   logger('The device is running');
 });
