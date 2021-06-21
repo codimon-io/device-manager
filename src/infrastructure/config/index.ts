@@ -9,7 +9,8 @@ export default {
   server: {
     url: process.env.SERVER_URL!,
   },
-  button: {
-    synchronize: Number(process.env.BUTTON_SYNCHRONIZE!),
+  synchronize: {
+    button: Number(process.env.SYNCHRONIZE_BUTTON!),
+    led: Number(process.env.SYNCHRONIZE_LED!),
   },
 };
