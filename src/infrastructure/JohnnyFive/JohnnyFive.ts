@@ -1,21 +1,31 @@
 import Button from '../../contexts/shared/infrastructure/JohnnyFive/Button';
+import JohnnyFive from 'johnny-five';
+import { RaspiIO } from 'raspi-io';
 
-class JohnnyFive {
-  public buttons: Button[];
+class JF {
+  private buttons: Button[];
+
+  private board: JohnnyFive.Board;
 
   constructor(buttons: Button[]) {
     this.buttons = buttons;
+
+    this.board = new JohnnyFive.Board({
+      io: new RaspiIO()
+    });
   }
 
   listen(cb?: () => void) {
-    this.buttons.forEach((button) => {
-      button.start();
+    this.board.on('ready', () => {
+      this.buttons.forEach((button) => {
+        button.start();
+      });
+  
+      if (cb) {
+        cb();
+      }
     });
-
-    if (cb) {
-      cb();
-    }
   }
 }
 
-export default JohnnyFive;
+export default JF;
