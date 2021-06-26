@@ -4,11 +4,11 @@ import IState from '../domain/IState';
 import ISocketLed from '../domain/ISocketLed';
 import SocketClient from '../../../infrastructure/socketClient/SocketClient';
 
-const logger = debug('device:contexts:device:actions:ConnectSocket');
+const logger = debug('device:contexts:device:actions:DisconnectSocket');
 
-const loggerError = debug('device:contexts:device:actions:ConnectSocket:error');
+const loggerError = debug('device:contexts:device:actions:DisconnectSocket:error');
 
-class ConnectSocket extends Action {
+class DisconnectSocket extends Action {
   private state: IState;
 
   private socketLed: ISocketLed;
@@ -26,17 +26,17 @@ class ConnectSocket extends Action {
 
   async execute(): Promise<void> {
     try {
-      this.socketClient.connect();
+      this.socketClient.disconnect();
 
-      this.socketLed.turnOn();
+      this.socketLed.turnOff();
 
-      this.state.isOnline = true;
+      this.state.isOnline = false;
 
-      logger('The device is online');
+      logger('The device is offline');
     } catch(error) {
       loggerError(error.message);
     }
   }
 }
 
-export default ConnectSocket;
+export default DisconnectSocket;

@@ -15,14 +15,22 @@ class Button {
     this.pressed = false;
   }
 
-  onPress(action: Action) {
+  private execute(action: Action|(() => void)): void {
+    if (action instanceof Action) {
+      action.execute();
+    } else {
+      action();
+    }
+  }
+
+  public onPress(action: Action|(() => void)): void {
     this.button.watch((error: Error | null | undefined, value: BinaryValue) => {
       if (error) {
         errorLogger(error.message);
       }
 
       if (value === 1 && this.pressed === false) {
-        action.execute();
+        this.execute(action);
 
         this.pressed = true;
       } 
@@ -33,7 +41,7 @@ class Button {
     });
   }
 
-  exit() {
+  public exit(): void {
     this.button.unexport();
   }
 }
