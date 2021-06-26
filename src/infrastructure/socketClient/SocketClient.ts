@@ -5,7 +5,17 @@ class SocketClient {
   private socket: Socket;
 
   constructor() {
-    this.socket = io(config.server.url);
+    this.socket = io(config.server.url, {
+      autoConnect: false
+    });
+  }
+
+  public connect(): void {
+    this.socket.connect();
+  }
+
+  public disconnect(): void {
+    this.socket.disconnect();
   }
 
   emit() {

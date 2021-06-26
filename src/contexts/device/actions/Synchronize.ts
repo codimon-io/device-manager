@@ -35,11 +35,11 @@ class Synchronize extends Action {
 
       await this.deviceRepository.save(newDevice);
 
-      this.synchronizeLed.turnOff();
-
       logger('New device information:', newDevice.toJSON());
     } catch (error) {
       loggerError(error.message);
+    } finally {
+      this.synchronizeLed.turnOff();
     }
   }
 }

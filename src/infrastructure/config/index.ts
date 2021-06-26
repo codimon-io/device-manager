@@ -13,4 +13,8 @@ export default {
     button: Number(process.env.SYNCHRONIZE_BUTTON!),
     led: Number(process.env.SYNCHRONIZE_LED!),
   },
+  socket: {
+    button: Number(process.env.SOCKET_CONNECT_BUTTON!),
+    led: Number(process.env.SOCKET_CONNECT_LED!),
+  },
 };
