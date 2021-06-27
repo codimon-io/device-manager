@@ -1,8 +1,9 @@
 import { io, Socket } from 'socket.io-client';
 import config from '../config/index';
+import DeviceId from '../../contexts/device/domain/DeviceId';
 
 class SocketClient {
-  private socket: Socket;
+  public socket: Socket;
 
   constructor() {
     this.socket = io(config.server.url, {
@@ -10,18 +11,28 @@ class SocketClient {
     });
   }
 
-  public connect(): void {
+  public connect(deviceId: DeviceId): void {
     this.socket.connect();
+
+    this.socket.emit('device:identify', {
+      deviceId: deviceId.value,
+      clientType: 'device',
+    });
+
+    this.socket.on("disconnect", (reason) => {
+      if (reason === "io server disconnect") {
+        this.socket.connect();
+
+        this.socket.emit('device:identify', {
+          deviceId: deviceId.value,
+          clientType: 'device',
+        });
+      }
+    });
   }
 
   public disconnect(): void {
     this.socket.disconnect();
-  }
-
-  emit() {
-    this.socket.emit('device:info', {
-      message: 'holiiiii',
-    });
   }
 }
 

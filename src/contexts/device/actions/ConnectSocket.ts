@@ -26,7 +26,7 @@ class ConnectSocket extends Action {
 
   async execute(): Promise<void> {
     try {
-      this.socketClient.connect();
+      this.socketClient.connect(this.state.deviceId!);
 
       this.socketLed.turnOn();
 
