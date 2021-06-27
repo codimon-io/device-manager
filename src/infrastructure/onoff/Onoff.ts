@@ -1,4 +1,8 @@
+import Action from '../../contexts/shared/domain/Action';
 import Button from '../../contexts/shared/infrastructure/onoff/Button';
+import debug from 'debug';
+
+const errorLogger = debug('device:infrastructure:Onoff:error');
 
 /**
  * @example
@@ -15,20 +19,30 @@ import Button from '../../contexts/shared/infrastructure/onoff/Button';
 class Onoff {
   public buttons: Button[];
 
-  constructor(buttons: Button[]) {
+  public initState: Action;
+
+  constructor(buttons: Button[], initState: Action) {
     this.buttons = buttons;
+
+    this.initState = initState;
   }
 
-  listen(cb?: () => void) {
-    if (cb) {
-      cb();
-    }
+  public async listen(cb?: () => void): Promise<void> {
+    try {
+      await this.initState.execute();
 
-    process.on('SIGINT', () => {
-      this.buttons.forEach((button) => {
-        button.exit();
+      if (cb) {
+        cb();
+      }
+    } catch (error) {
+      errorLogger(error.message);
+    } finally {
+      process.on('SIGINT', () => {
+        this.buttons.forEach((button) => {
+          button.exit();
+        });
       });
-    });
+    }
   }
 }
 
