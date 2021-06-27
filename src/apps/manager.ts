@@ -1,4 +1,5 @@
 import '../contexts/device/infrastructure/subscribers/onRemoteControl';
+import '../contexts/device/infrastructure/subscribers/onStartStreaming';
 import Button from '../contexts/shared/infrastructure/onoff/Button';
 import debug from 'debug';
 import DeviceRepository from '../contexts/device/infrastructure/DeviceRepository/DeviceRepository';
