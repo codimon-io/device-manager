@@ -1,0 +1,1 @@
+declare module 'raspberry-pi-camera-native';
