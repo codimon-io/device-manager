@@ -1,5 +1,5 @@
 abstract class Action {
-  abstract execute(): Promise<void>
+  abstract execute(data?: any): Promise<void>
 }
 
 export default Action;

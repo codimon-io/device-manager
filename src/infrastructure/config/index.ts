@@ -17,4 +17,11 @@ export default {
     button: Number(process.env.SOCKET_CONNECT_BUTTON!),
     led: Number(process.env.SOCKET_CONNECT_LED!),
   },
+  camera: {
+    width: 640,
+    height: 480,
+    fps: 15,
+    encoding: 'JPEG',
+    quality: 10,
+  },
 };

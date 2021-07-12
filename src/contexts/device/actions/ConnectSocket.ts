@@ -2,7 +2,7 @@ import Action from '../../shared/domain/Action';
 import debug from 'debug';
 import IState from '../domain/IState';
 import ISocketLed from '../domain/ISocketLed';
-import SocketClient from '../../../infrastructure/socketClient/SocketClient';
+import SocketClient from '../../../infrastructure/SocketClient/SocketClient';
 
 const logger = debug('device:contexts:device:actions:ConnectSocket');
 
