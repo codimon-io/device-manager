@@ -10,6 +10,7 @@ import { socketClient } from '../infrastructure/SocketClient/SocketClient';
 import onStartStreaming from '../contexts/realTime/infrastructure/listeners/onStartStreaming';
 import onStopStreaming from '../contexts/realTime/infrastructure/listeners/onStopStreaming';
 import onRemoteControl from '../contexts/realTime/infrastructure/listeners/onRemoteControl';
+import onMoveCamera from '../contexts/realTime/infrastructure/listeners/onMoveCamera';
 
 const logger = debug('device:apps:manager');
 
@@ -17,6 +18,7 @@ socketClient.use([
   onStartStreaming,
   onStopStreaming,
   onRemoteControl,
+  onMoveCamera,
 ]);
 
 const buttons: Button[] = [
