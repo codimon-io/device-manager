@@ -24,4 +24,7 @@ export default {
     encoding: 'JPEG',
     quality: 10,
   },
+  cameraServo: {
+    pin: 24,
+  },
 };
