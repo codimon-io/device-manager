@@ -2,14 +2,12 @@ import Events from '../../../../infrastructure/SocketClient/Events';
 import { Socket } from 'socket.io-client';
 import { socketClient } from '../../../../infrastructure/SocketClient/SocketClient';
 import StartStreaming from '../../actions/StartStreaming';
-import Camera from '../Camera';
+import { camera } from '../Camera';
 import RealTimeService from '../RealTimeService';
 
 interface IStartStreamingData {
   userId: string;
 }
-
-const camera = new Camera();
 
 const realTimeService = new RealTimeService(socketClient);
 

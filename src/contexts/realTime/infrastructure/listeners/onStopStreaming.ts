@@ -1,13 +1,11 @@
 import Events from '../../../../infrastructure/SocketClient/Events';
 import { Socket } from 'socket.io-client';
 import StopStreaming from '../../actions/StopStreaming';
-import Camera from '../Camera';
+import { camera } from '../Camera';
 
 interface IStopStreamingData {
   userId: string;
 }
-
-const camera = new Camera();
 
 const stopStreaming = new StopStreaming(camera);
 
